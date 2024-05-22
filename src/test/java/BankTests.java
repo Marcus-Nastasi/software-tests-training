@@ -13,7 +13,6 @@ public class BankTests {
     private final Bank bank = new Bank();
     private final Person client = new Client("Jack", "123812793817");
     private final Person client2 = new Client("Logan", "12381279892389");
-
     private final Account account = new CurrentAccount(1000, 1004, client);
     private final Account account2 = new CurrentAccount(1004, 1004, client);
     private final Account savingsAccount = new SavingsAccount(1002, 1004, client);
@@ -21,7 +20,6 @@ public class BankTests {
     @Test
     void testingAddClient() {
         bank.addClient(client);
-        bank.addAccount(account);
         Assertions.assertEquals("Jack", bank.getClient(client).getName());
     }
 
