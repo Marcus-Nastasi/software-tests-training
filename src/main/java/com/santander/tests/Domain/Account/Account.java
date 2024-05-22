@@ -23,6 +23,9 @@ public abstract class Account implements IAccount {
     @Override
     public abstract void deposit(double value);
 
+    @Override
+    public abstract void transferBetweenAccounts(Account accountTo, double value);
+
     public Person getClient() {
         return client;
     }

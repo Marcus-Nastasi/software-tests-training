@@ -17,6 +17,12 @@ public class CurrentAccount extends Account {
     public void deposit(double value) {
         this.setBalance(this.getBalance() + value);
     }
+
+    @Override
+    public void transferBetweenAccounts(Account accountTo, double value) {
+        this.withdraw(value);
+        accountTo.deposit(value);
+    }
 }
 
 
