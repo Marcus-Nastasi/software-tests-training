@@ -1,10 +1,10 @@
 package com.santander.tests.Domain.Account;
 
-import com.santander.tests.Domain.Client.Client;
+import com.santander.tests.Domain.Client.Person;
 
 public class CurrentAccount extends Account {
 
-    public CurrentAccount(long id, long agency, Client client) {
+    public CurrentAccount(long id, long agency, Person client) {
         super(id, agency, client);
     }
 

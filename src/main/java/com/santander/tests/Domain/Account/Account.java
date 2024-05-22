@@ -1,15 +1,16 @@
 package com.santander.tests.Domain.Account;
 
 import com.santander.tests.Domain.Client.Client;
+import com.santander.tests.Domain.Client.Person;
 
 public abstract class Account implements IAccount {
 
     private final long id;
     private final long agency;
     private double balance;
-    private final Client client;
+    private final Person client;
 
-    protected Account(long id, long agency, Client client) {
+    protected Account(long id, long agency, Person client) {
         this.id = id;
         this.agency = agency;
         this.client = client;
@@ -22,7 +23,7 @@ public abstract class Account implements IAccount {
     @Override
     public abstract void deposit(double value);
 
-    public Client getClient() {
+    public Person getClient() {
         return client;
     }
 
