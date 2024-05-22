@@ -45,6 +45,14 @@ public class Bank {
     public Account getAccount(long id) {
         return this.accountHashSet.stream().filter(a -> a.getId() == id).findFirst().get();
     }
+
+    public HashSet<Person> getClientHashSet() {
+        return clientHashSet;
+    }
+
+    public HashSet<Account> getAccountHashSet() {
+        return accountHashSet;
+    }
 }
 
 

@@ -11,6 +11,7 @@ public class BankTests {
     private final Bank bank = new Bank();
     private final Person client = new Client("Jack", "123812793817");
     private final Account account = new CurrentAccount(1000, 1004, client);
+    private final Account account2 = new CurrentAccount(1000, 1004, client);
 
     @Test
     void testingAddClient() {
@@ -31,4 +32,13 @@ public class BankTests {
         bank.addAccount(account);
         Assertions.assertEquals(account, bank.getAccount(1000));
     }
+
+    @Test
+    void testingExceptions() {
+        bank.addAccount(account);
+        bank.addAccount(account2);
+        Assertions.assertEquals(account2, bank.getAccount(1000));
+    }
 }
+
+
