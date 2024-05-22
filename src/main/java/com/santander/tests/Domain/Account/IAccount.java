@@ -2,8 +2,8 @@ package com.santander.tests.Domain.Account;
 
 public interface IAccount {
 
-    void withdraw();
-    void deposit();
+    void withdraw(double value);
+    void deposit(double value);
 }
 
 

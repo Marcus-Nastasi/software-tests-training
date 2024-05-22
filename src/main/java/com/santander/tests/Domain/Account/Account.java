@@ -9,7 +9,7 @@ public abstract class Account implements IAccount {
     protected double balance;
     protected final Client client;
 
-    public Account(long id, long agency, Client client) {
+    protected Account(long id, long agency, Client client) {
         this.id = id;
         this.agency = agency;
         this.client = client;
@@ -17,10 +17,10 @@ public abstract class Account implements IAccount {
     }
 
     @Override
-    public abstract void withdraw();
+    public abstract void withdraw(double value);
 
     @Override
-    public abstract void deposit();
+    public abstract void deposit(double value);
 
     public Client getClient() {
         return client;
