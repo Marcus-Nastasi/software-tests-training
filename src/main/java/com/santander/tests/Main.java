@@ -12,8 +12,9 @@ public class Main {
         Bank bank = new Bank();
         Person client = new Client("Orga", "121872781");
         Account account = new CurrentAccount(1000, 1000, client);
+        bank.addClient(client);
         bank.addAccount(account);
-        System.out.println(bank.getAccountHashSet());
+        System.out.println(bank.getClientHashSet());
     }
 }
 
