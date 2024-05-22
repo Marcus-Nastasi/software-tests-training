@@ -17,6 +17,13 @@ public class SavingsAccountTests {
         Assertions.assertEquals(1004, account.getAgency());
         Assertions.assertEquals(client, account.getClient());
     }
+
+    @Test
+    void testingProfitMethod() {
+        account.deposit(100);
+        if (account instanceof SavingsAccount) ((SavingsAccount) account).profit();
+        Assertions.assertEquals(110, account.getBalance());
+    }
 }
 
 
