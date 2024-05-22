@@ -22,6 +22,14 @@ public class ClientTests {
         Assertions.assertEquals(1004, person.getAccountList().getFirst().getAgency());
         Assertions.assertEquals(person, person.getAccountList().getFirst().getClient());
     }
+
+    @Test
+    void testingRemoveAccount() {
+        person.addAccount(account);
+        Assertions.assertFalse(person.getAccountList().isEmpty());
+        person.removeAccount(account);
+        Assertions.assertTrue(person.getAccountList().isEmpty());
+    }
 }
 
 
