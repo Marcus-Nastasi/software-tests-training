@@ -10,12 +10,12 @@ public class CurrentAccount extends Account {
 
     @Override
     public void withdraw(double value) {
-        this.balance -= value;
+        this.setBalance(this.getBalance() - value);
     }
 
     @Override
     public void deposit(double value) {
-        this.balance += value;
+        this.setBalance(this.getBalance() + value);
     }
 }
 

@@ -4,10 +4,10 @@ import com.santander.tests.Domain.Client.Client;
 
 public abstract class Account implements IAccount {
 
-    protected final long id;
-    protected final long agency;
-    protected double balance;
-    protected final Client client;
+    private final long id;
+    private final long agency;
+    private double balance;
+    private final Client client;
 
     protected Account(long id, long agency, Client client) {
         this.id = id;
@@ -38,7 +38,7 @@ public abstract class Account implements IAccount {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    protected void setBalance(double balance) {
         this.balance = balance;
     }
 }
