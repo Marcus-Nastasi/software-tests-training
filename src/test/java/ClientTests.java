@@ -30,6 +30,12 @@ public class ClientTests {
         person.removeAccount(account);
         Assertions.assertTrue(person.getAccountList().isEmpty());
     }
+
+    @Test
+    void testingGetterOfAccounts() {
+        person.addAccount(account);
+        Assertions.assertEquals(account, person.getAccountList().getFirst());
+    }
 }
 
 
