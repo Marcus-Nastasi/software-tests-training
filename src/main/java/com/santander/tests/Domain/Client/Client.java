@@ -13,6 +13,14 @@ public class Client extends Person {
         super(name, cpf);
     }
 
+    public void addAccount(Account account) {
+        this.accountList.add(account);
+    }
+
+    public void removeAccount(Account account) {
+        this.accountList.remove(account);
+    }
+
     public List<Account> getAccountList() {
         return accountList;
     }
