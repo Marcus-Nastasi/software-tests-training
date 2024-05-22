@@ -2,6 +2,7 @@ package com.santander.tests.Domain.Bank;
 
 import com.santander.tests.Domain.Account.Account;
 import com.santander.tests.Domain.Client.Person;
+import com.santander.tests.Exceptions.BankException;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -27,20 +28,26 @@ public class Bank {
         return Objects.hash(clientHashSet, accountHashMap);
     }
 
-    public void addClient(Person client) {
+    public void addClient(Person client) throws BankException {
+        if (this.getClient(client) != null) throw new BankException("Client already on bank");
         this.clientHashSet.add(client);
     }
 
-    public void addAccount(Account account) {
+    public void addAccount(Account account) throws BankException {
+        if (this.accountHashMap.get(account.getId()) != null) throw new BankException("Account number already exists.");
         this.accountHashMap.put(account.getId(), account);
     }
 
     public Person getClient(Person client) {
-        return this.clientHashSet.stream().filter(c -> c.equals(client)).findFirst().get();
+        if (this.clientHashSet.isEmpty()) return null;
+        return this.getClient(client.getCpf());
     }
 
     public Person getClient(String cpf) {
-        return this.clientHashSet.stream().filter(c -> c.getCpf().equals(cpf)).findFirst().get();
+        if (this.clientHashSet.isEmpty()) return null;
+        Person pFinded = null;
+        for (Person p: this.clientHashSet) if (p.getCpf().equals(cpf)) pFinded = p;
+        return pFinded;
     }
 
     public Account getAccount(long id) {

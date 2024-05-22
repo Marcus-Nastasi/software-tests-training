@@ -4,6 +4,7 @@ import com.santander.tests.Domain.Account.SavingsAccount;
 import com.santander.tests.Domain.Bank.Bank;
 import com.santander.tests.Domain.Client.Client;
 import com.santander.tests.Domain.Client.Person;
+import com.santander.tests.Exceptions.BankException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -11,8 +12,10 @@ public class BankTests {
 
     private final Bank bank = new Bank();
     private final Person client = new Client("Jack", "123812793817");
+    private final Person client2 = new Client("Logan", "12381279892389");
+
     private final Account account = new CurrentAccount(1000, 1004, client);
-    private final Account account2 = new CurrentAccount(1000, 1004, client);
+    private final Account account2 = new CurrentAccount(1004, 1004, client);
     private final Account savingsAccount = new SavingsAccount(1002, 1004, client);
 
     @Test
@@ -47,8 +50,12 @@ public class BankTests {
     @Test
     void testingExceptions() {
         bank.addAccount(account);
-        bank.addAccount(account2);
-        Assertions.assertEquals(1, bank.getAccountHashMap().size());
+        Assertions.assertThrows(BankException.class, () -> bank.addAccount(account));
+        Assertions.assertDoesNotThrow(() -> bank.addAccount(account2));
+
+        bank.addClient(client);
+        Assertions.assertThrows(BankException.class, () -> bank.addClient(client));
+        Assertions.assertDoesNotThrow(() -> bank.addClient(client2));
     }
 }
 
