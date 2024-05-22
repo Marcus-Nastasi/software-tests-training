@@ -25,4 +25,10 @@ public class BankTests {
         Assertions.assertEquals(client, bank.getClient(client));
         Assertions.assertEquals(client, bank.getClient("123812793817"));
     }
+
+    @Test
+    void testingGetAccount() {
+        bank.addAccount(account);
+        Assertions.assertEquals(account, bank.getAccount(1000));
+    }
 }
