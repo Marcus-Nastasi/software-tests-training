@@ -21,6 +21,12 @@ public class BankTests {
     }
 
     @Test
+    void testingAddAccountOnHashMap() {
+        bank.addAccount(account);
+        Assertions.assertEquals(account, bank.getAccount(account.getId()));
+    }
+
+    @Test
     void testingGetClient() {
         bank.addClient(client);
         Assertions.assertEquals(client, bank.getClient(client));
@@ -37,7 +43,7 @@ public class BankTests {
     void testingExceptions() {
         bank.addAccount(account);
         bank.addAccount(account2);
-        Assertions.assertEquals(account2, bank.getAccount(1000));
+        Assertions.assertEquals(1, bank.getAccountHashMap().size());
     }
 }
 

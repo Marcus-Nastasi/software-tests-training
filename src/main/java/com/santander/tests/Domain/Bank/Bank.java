@@ -47,6 +47,10 @@ public class Bank {
         return this.accountHashMap.get(id);
     }
 
+    public HashMap<Long, Account> getAccountHashMap() {
+        return accountHashMap;
+    }
+
     public HashSet<Person> getClientHashSet() {
         return clientHashSet;
     }
