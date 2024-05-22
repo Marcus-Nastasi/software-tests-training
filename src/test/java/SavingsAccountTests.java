@@ -24,6 +24,13 @@ public class SavingsAccountTests {
         if (account instanceof SavingsAccount) ((SavingsAccount) account).profit();
         Assertions.assertEquals(110, account.getBalance());
     }
+
+    @Test
+    void testingTransferBetweenAccounts() {
+        account.deposit(100);
+        Assertions.assertDoesNotThrow(() -> account.transferBetweenAccounts(account2, 100));
+        Assertions.assertEquals(100, account2.getBalance());
+    }
 }
 
 
