@@ -41,6 +41,10 @@ public class Bank {
     public Person getClient(String cpf) {
         return this.clientHashSet.stream().filter(c -> c.getCpf().equals(cpf)).findFirst().get();
     }
+
+    public Account getAccount(long id) {
+        return this.accountHashSet.stream().filter(a -> a.getId() == id).findFirst().get();
+    }
 }
 
 
