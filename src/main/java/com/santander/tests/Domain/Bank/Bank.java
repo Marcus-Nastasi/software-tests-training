@@ -33,6 +33,14 @@ public class Bank {
     public void addAccount(Account account) {
         this.accountHashSet.add(account);
     }
+
+    public Person getClient(Person client) {
+        return this.clientHashSet.stream().filter(c -> c.equals(client)).findFirst().get();
+    }
+
+    public Person getClient(String cpf) {
+        return this.clientHashSet.stream().filter(c -> c.getCpf().equals(cpf)).findFirst().get();
+    }
 }
 
 
