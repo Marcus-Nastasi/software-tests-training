@@ -8,12 +8,21 @@ public class CurrentAccountTests {
 
     private final Client client = new Client("Henry", "122222222");
     private final Account account = new CurrentAccount(1000, 1004, client);
+    private final Account account2 = new CurrentAccount(1001, 1004, client);
 
     @Test
     void testingConstructor() {
         Assertions.assertEquals(1000, account.getId());
         Assertions.assertEquals(1004, account.getAgency());
         Assertions.assertEquals(client, account.getClient());
+    }
+
+    @Test
+    void testingTransferBetweenAccounts() {
+        account.deposit(100);
+        account.transferBetweenAccounts(account2, 100);
+        Assertions.assertEquals(0.0, account.getBalance());
+        Assertions.assertEquals(100, account2.getBalance());
     }
 
     @Test
