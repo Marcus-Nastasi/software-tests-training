@@ -15,6 +15,14 @@ public class CurrentAccountTests {
         Assertions.assertEquals(1004, account.getAgency());
         Assertions.assertEquals(client, account.getClient());
     }
+
+
+    @Test
+    void testingWithdraw() {
+        account.deposit(100);
+        account.withdraw(50);
+        Assertions.assertEquals(50, account.getBalance());
+    }
 }
 
 
