@@ -1,5 +1,6 @@
 import com.santander.tests.Domain.Account.Account;
 import com.santander.tests.Domain.Account.CurrentAccount;
+import com.santander.tests.Domain.Account.SavingsAccount;
 import com.santander.tests.Domain.Bank.Bank;
 import com.santander.tests.Domain.Client.Client;
 import com.santander.tests.Domain.Client.Person;
@@ -12,6 +13,7 @@ public class BankTests {
     private final Person client = new Client("Jack", "123812793817");
     private final Account account = new CurrentAccount(1000, 1004, client);
     private final Account account2 = new CurrentAccount(1000, 1004, client);
+    private final Account savingsAccount = new SavingsAccount(1002, 1004, client);
 
     @Test
     void testingAddClient() {
@@ -24,6 +26,9 @@ public class BankTests {
     void testingAddAccountOnHashMap() {
         bank.addAccount(account);
         Assertions.assertEquals(account, bank.getAccount(account.getId()));
+        bank.addAccount(savingsAccount);
+        Assertions.assertEquals(2, bank.getAccountHashMap().size());
+        Assertions.assertEquals(savingsAccount, bank.getAccount(1002));
     }
 
     @Test
