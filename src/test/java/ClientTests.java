@@ -1,6 +1,7 @@
 import com.santander.tests.Domain.Account.Account;
 import com.santander.tests.Domain.Account.CurrentAccount;
 import com.santander.tests.Domain.Client.Client;
+import com.santander.tests.Exceptions.ClientException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -35,6 +36,13 @@ public class ClientTests {
     void testingGetterOfAccounts() {
         person.addAccount(account);
         Assertions.assertEquals(account, person.getAccountList().getFirst());
+    }
+
+    @Test
+    void testingExceptions() {
+        Assertions.assertThrows(ClientException.class, () -> person.removeAccount(account));
+        person.addAccount(account);
+        Assertions.assertDoesNotThrow(() -> person.removeAccount(account));
     }
 }
 
