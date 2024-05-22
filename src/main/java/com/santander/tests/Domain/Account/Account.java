@@ -26,6 +26,16 @@ public abstract class Account implements IAccount {
     @Override
     public abstract void transferBetweenAccounts(Account accountTo, double value);
 
+    @Override
+    public String toString() {
+        return(
+            "Account{" + "id=" + id +
+            ", agency=" + agency +
+            ", balance=" + balance +
+            ", client=" + client + '}'
+        );
+    }
+
     public Person getClient() {
         return client;
     }
