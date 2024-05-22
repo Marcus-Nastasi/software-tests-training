@@ -2,6 +2,7 @@ import com.santander.tests.Domain.Account.Account;
 import com.santander.tests.Domain.Account.CurrentAccount;
 import com.santander.tests.Domain.Client.Client;
 import com.santander.tests.Domain.Client.Person;
+import com.santander.tests.Exceptions.AccountException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -37,6 +38,21 @@ public class CurrentAccountTests {
         account.deposit(100);
         account.withdraw(50);
         Assertions.assertEquals(50, account.getBalance());
+    }
+
+    @Test
+    void testingAccountExceptions() {
+
+        Assertions.assertThrows(AccountException.class, () -> account.withdraw(100));
+        Assertions.assertThrows(AccountException.class, () -> account.transferBetweenAccounts(account2, 100));
+        Assertions.assertDoesNotThrow(() -> {
+            account.deposit(100);
+            account.withdraw(100);
+        });
+        Assertions.assertDoesNotThrow(() -> {
+            account.deposit(100);
+            account.transferBetweenAccounts(account2, 100);
+        });
     }
 }
 
