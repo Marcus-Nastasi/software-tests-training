@@ -18,4 +18,11 @@ public class BankTests {
         bank.addAccount(account);
         Assertions.assertEquals("Jack", bank.getClient(client).getName());
     }
+
+    @Test
+    void testingGetClient() {
+        bank.addClient(client);
+        Assertions.assertEquals(client, bank.getClient(client));
+        Assertions.assertEquals(client, bank.getClient("123812793817"));
+    }
 }
